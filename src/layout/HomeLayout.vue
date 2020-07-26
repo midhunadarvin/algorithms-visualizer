@@ -86,23 +86,37 @@ export default {
       }));
     },
     async sortArray(algorithm) {
+      if (!this.sorting) {
+        this.sorting = true;
+      } else {
+        return;
+      }
       switch (algorithm) {
         case "bubble-sort": {
           this.bubbleSort();
           break;
         }
         case "insertion-sort": {
-          this.insertionSort();
+          await this.insertionSort();
+          for (let i = 0; i < this.chartValues.length; i++) {
+            this.chartValues[i].color = this.sortedBarColor;
+          }
+          break;
+        }
+        case "quick-sort": {
+          await this.quickSort(
+            this.chartValues,
+            0,
+            this.chartValues.length - 1
+          );
+          for (let i = 0; i < this.chartValues.length; i++) {
+            this.chartValues[i].color = this.sortedBarColor;
+          }
           break;
         }
       }
     },
     async bubbleSort() {
-      if (!this.sorting) {
-        this.sorting = true;
-      } else {
-        return;
-      }
       for (let i = 0; i < this.chartValues.length; i++) {
         if (!this.sorting) {
           break;
@@ -129,30 +143,47 @@ export default {
       }
     },
     async insertionSort() {
-      if (!this.sorting) {
-        this.sorting = true;
-      } else {
-        return;
-      }
-      for (let i = this.chartValues.length - 1; i >= 0; i--) {
-        let maxValue = this.chartValues[0].value;
-        let maxIndex = 0;
-        for (let j = 1; j < i; j++) {
-          if (this.chartValues[j].value > maxValue) {
-            maxValue = this.chartValues[j].value;
-            maxIndex = j;
-          }
-        }
-        if (this.chartValues[maxIndex].value > this.chartValues[i].value) {
-          this.chartValues[i].color = this.swappingBarcolor;
-          this.chartValues[maxIndex].color = this.swappingBarcolor;
+      for (let i = 1; i < this.chartValues.length; i++) {
+        let j = i - 1;
+        while (
+          j >= 0 &&
+          this.chartValues[j].value > this.chartValues[j + 1].value
+        ) {
+          this.chartValues[j].color = this.swappingBarcolor;
+          this.chartValues[j + 1].color = this.swappingBarcolor;
           await delay(10);
-          swap(this.chartValues, maxIndex, i);
+          swap(this.chartValues, j, j + 1);
           await delay(10);
-          this.chartValues[maxIndex].color = this.defaultBarColor;
+          this.chartValues[j].color = this.defaultBarColor;
+          this.chartValues[j + 1].color = this.defaultBarColor;
+          j--;
         }
-        this.chartValues[i].color = this.sortedBarColor;
       }
+    },
+    async quickSort(array, start, end) {
+      if (start < end) {
+        const pivotIndex = await this.partition(array, start, end);
+        await Promise.all([this.quickSort(array, start, pivotIndex - 1), this.quickSort(array, pivotIndex + 1, end)]);
+      }
+    },
+    async partition(array, start, end) {
+      let pivot = array[end].value;
+      let i = start;
+      for (let j = start; j <= end - 1; j++) {
+        if (array[j].value < pivot) {
+          array[i].color = this.swappingBarcolor;
+          array[j].color = this.swappingBarcolor;
+          swap(array, i, j);
+          await delay(50);
+          array[i].color = this.defaultBarColor;
+          array[j].color = this.defaultBarColor;
+          i++;
+        }
+      }
+      swap(array, end, i);
+      array[i].color = this.sortedBarColor;
+      await delay(50);
+      return i;
     },
   },
 };
