@@ -114,6 +114,13 @@ export default {
           }
           break;
         }
+        case "merge-sort": {
+          await this.mergeSort(this.chartValues, 0, this.chartValues.length - 1);
+          for (let i = 0; i < this.chartValues.length; i++) {
+            this.chartValues[i].color = this.sortedBarColor;
+          }
+          break;
+        }
       }
     },
     async bubbleSort() {
@@ -163,7 +170,10 @@ export default {
     async quickSort(array, start, end) {
       if (start < end) {
         const pivotIndex = await this.partition(array, start, end);
-        await Promise.all([this.quickSort(array, start, pivotIndex - 1), this.quickSort(array, pivotIndex + 1, end)]);
+        await Promise.all([
+          this.quickSort(array, start, pivotIndex - 1),
+          this.quickSort(array, pivotIndex + 1, end),
+        ]);
       }
     },
     async partition(array, start, end) {
@@ -184,6 +194,54 @@ export default {
       array[i].color = this.sortedBarColor;
       await delay(50);
       return i;
+    },
+    async mergeSort(array, start, end) {
+      if (start < end) {
+        const middle = Math.floor(start + (end - start) / 2);
+        await this.mergeSort(array, start, middle);
+        await this.mergeSort(array, middle + 1, end);
+        await this.merge(array, start, middle, end);
+      }
+    },
+    async merge(array, start, middle, end) {
+      const L = [];
+      const R = [];
+      const n1 = middle - start + 1;
+      const n2 = end - middle;
+      for (let i = 0; i < n1; i++) {
+        L.push(array[start + i]);
+      }
+      for (let j = 0; j < n2; j++) {
+        R.push(array[middle + 1 + j]);
+      }
+
+      let i = 0;
+      let j = 0;
+      let k = start;
+      while (i < n1 && j < n2) {
+        if (L[i].value <= R[j].value) {
+          array[k] = L[i];
+          i++;
+        } else {
+          array[k] = R[j];
+          j++;
+        }
+        array[k].color = this.swappingBarcolor;
+        await delay(10);
+        k++;
+      }
+
+      while (i < n1) {
+        array[k] = L[i];
+        i++;
+        k++;
+      }
+
+      while (j < n2) {
+        array[k] = R[j];
+        j++;
+        k++;
+      }
     },
   },
 };

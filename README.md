@@ -5,8 +5,7 @@
 
 > Contains visualization quick sort, insertion sort, bubble sort, merge sort.
 
-[![INSERT YOUR GRAPHIC HERE](https://i.ibb.co/W093xgY/1.png)]()
-
+Demo Link : https://vuejs-sorting-algo-visualizer.herokuapp.com/
 
 **Recordit**
 
