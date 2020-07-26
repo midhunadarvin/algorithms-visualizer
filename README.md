@@ -3,9 +3,9 @@
 
 > A sorting algorithm visualizer made with vuejs and HTML Canvas
 
-> Contains visualization for quick sort, insertion sort, bubble sort, merge sort.
+> Contains visualization quick sort, insertion sort, bubble sort, merge sort.
 
-[![INSERT YOUR GRAPHIC HERE](https://ibb.co/ypTRfWb)]()
+[![INSERT YOUR GRAPHIC HERE](https://i.ibb.co/W093xgY/1.png)]()
 
 
 **Recordit**
