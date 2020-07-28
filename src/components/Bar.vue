@@ -35,7 +35,7 @@ export default {
     // The value to display.
     value: {
       type: Number,
-      defualt: 0,
+      default: 0,
     },
 
     // The color of the box.
@@ -100,13 +100,13 @@ export default {
     ctx.beginPath();
     // Clear the old area from the previous render.
     if (oldBox.w == newBox.w && oldBox.x == newBox.x) {
-      ctx.clearRect(oldBox.x, oldBox.y, oldBox.w, oldBox.h);
+      ctx.clearRect(oldBox.x, oldBox.y - 2, oldBox.w, oldBox.h - 2);
     }
     // Clear the area for the text.
     // ctx.clearRect(newBox.x, newBox.y - 42, newBox.w, 100);
 
     // Draw the new rectangle.
-    ctx.rect(newBox.x, newBox.y, newBox.w, newBox.h);
+    ctx.rect(newBox.x + 1, newBox.y - 1, newBox.w - 2, newBox.h - 2);
     ctx.fillStyle = this.color;
     ctx.fill();
     return null;

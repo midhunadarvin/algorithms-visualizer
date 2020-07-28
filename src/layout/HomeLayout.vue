@@ -198,8 +198,10 @@ export default {
     async mergeSort(array, start, end) {
       if (start < end) {
         const middle = Math.floor(start + (end - start) / 2);
-        await this.mergeSort(array, start, middle);
-        await this.mergeSort(array, middle + 1, end);
+        Promise.all([
+          await this.mergeSort(array, start, middle),
+          await this.mergeSort(array, middle + 1, end)
+        ]);
         await this.merge(array, start, middle, end);
       }
     },
@@ -227,21 +229,28 @@ export default {
           j++;
         }
         array[k].color = this.swappingBarcolor;
-        await delay(10);
+        await delay(20);
         k++;
       }
 
       while (i < n1) {
         array[k] = L[i];
+        await delay(20);
         i++;
         k++;
       }
 
       while (j < n2) {
         array[k] = R[j];
+        await delay(20);
         j++;
         k++;
       }
+
+      for(let j = start; j < k; j++) {
+        array[j].color = this.defaultBarColor;
+      }
+      await delay(20);
     },
   },
 };
