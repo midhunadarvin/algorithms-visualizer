@@ -7,6 +7,7 @@
           <md-option value="dijkstra">Dijkstra's algorithm</md-option>
           <md-option value="breadth-first">Breadth-first search</md-option>
           <md-option value="depth-first">Depth-first search</md-option>
+          <md-option value="a-star-search">A* search</md-option>
         </md-select>
       </md-field>
     </div>
@@ -20,9 +21,15 @@
       </div>
     </div>
 
-    <div class="col-2 flex flex-row">
+    <div class="col-4 flex flex-row">
       <div class="mb1">
-        <md-button class="md-raised md-accent reset-button" v-on:click="resetButtonClick">Reset</md-button>
+        <md-button class="md-raised md-accent reset-button" v-on:click="resetButtonClick" :disabled="running">Reset</md-button>
+      </div>
+       <div class="mb1">
+        <md-button 
+          class="md-raised reset-button"
+          v-on:click="clearWallsButtonClick"
+          :disabled="running">Clear Walls</md-button>
       </div>
       <div class="mb1">
         <md-button
@@ -68,6 +75,9 @@ export default {
     resetButtonClick() {
       this.$emit("reset-button-click", this.dataSizeValue);
     },
+    clearWallsButtonClick() {
+      this.$emit("clear-walls-button-click");
+    }
   },
 };
 </script>

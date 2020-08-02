@@ -10,6 +10,7 @@
             v-on:mode-change="setMode"
             v-on:reset-button-click="reset"
             v-on:action-button-click="start"
+            v-on:clear-walls-button-click="clearWalls"
           />
         </md-card-content>
       </md-card>
@@ -46,6 +47,7 @@ import PathFindingOptionsBar from "../../components/PathFindingOptionsBar";
 import { dijkstra } from "../../algorithms/dijikstra";
 import { breadthFirstSearch } from "../../algorithms/breadth-first-search";
 import { depthFirstSearch } from "../../algorithms/depth-first-search";
+import { AstarSearch } from "../../algorithms/a-star-search";
 import { delay } from "../../utils/common.utils";
 import { getNodesInShortestPathOrder } from "../../utils/grid.utils";
 
@@ -81,7 +83,7 @@ export default {
       running: false,
       mouseDown: false,
       mode: "wall",
-      algorithm: 'dijkstra',
+      algorithm: "dijkstra",
       nodes: this.createNodes(),
     };
   },
@@ -107,17 +109,26 @@ export default {
             endNode
           );
           break;
-        case "depth-first": 
-          visitedNodesInOrder = depthFirstSearch(this.nodes, startNode, endNode);
+        case "depth-first":
+          visitedNodesInOrder = depthFirstSearch(
+            this.nodes,
+            startNode,
+            endNode
+          );
+          break;
+        case "a-star-search":
+          visitedNodesInOrder = AstarSearch(this.nodes, startNode, endNode);
+          break;
       }
       const shortestPath = getNodesInShortestPathOrder(
         visitedNodesInOrder[visitedNodesInOrder.length - 1]
       );
       await animateAlgorithm(visitedNodesInOrder, shortestPath, this.nodes);
+      this.running = false;
     },
     reset() {
       this.running = false;
-      this.nodes = this.createNodes();
+      this.clearPaths();
     },
     setMode(mode) {
       this.mode = mode;
@@ -141,6 +152,45 @@ export default {
         });
         return item;
       });
+    },
+    clearPaths() {
+      this.nodes = Array.from({ length: 15 }, (item, i) => {
+        item = Array.from({ length: 40 }, (item, j) => {
+          let type = "normal";
+          let isWall = false;
+          if (this.nodes[i][j].isWall) {
+            type = "wall"
+            isWall = true;
+          }
+          return {
+            type,
+            isStart:
+              i === this.previousPoint["start"].y &&
+              j === this.previousPoint["start"].x,
+            isEnd:
+              i === this.previousPoint["end"].y &&
+              j === this.previousPoint["end"].x,
+            distance: Infinity,
+            col: j,
+            row: i,
+            isWall
+          };
+        });
+        return item;
+      });
+      this.nodes = [...this.nodes];
+    },
+    clearWalls() {
+      this.clearPaths();
+      for (let i = 0; i < this.nodes.length; i++) {
+        for (let j = 0; j < this.nodes[i].length; j++) {
+          if (this.nodes[i][j].isWall) {
+            this.nodes[i][j].isWall = false;
+            this.nodes[i][j].type = "normal";
+          }
+        }
+      }
+      this.nodes = [...this.nodes];
     },
     setMouseDown() {
       this.mouseDown = true;
