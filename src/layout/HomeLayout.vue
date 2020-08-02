@@ -9,7 +9,7 @@
         <md-button class="md-primary" v-on:click="$router.push('sorting-algorithms')">
           Sorting Algorithms
         </md-button>
-        <md-button class="md-primary" v-on:click="$router.push('dijkstra-algorithm')">
+        <md-button class="md-primary" v-on:click="$router.push('pathfinding-algorithms')">
           Path Algorithms
         </md-button>
       </div>

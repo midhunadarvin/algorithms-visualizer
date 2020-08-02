@@ -16,7 +16,7 @@ export default {
     HomeLayout,
   },
   data: () => ({
-    title: "Sorting Algorithms Visualizer",
+    title: "Algorithms Visualizer",
   }),
 };
 </script>
