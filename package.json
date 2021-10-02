@@ -9,6 +9,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@types/vue-material": "git+https://github.com/calebsander/vue-material-types.git",
     "basscss": "^8.1.0",
     "core-js": "^3.18.1",
     "draggabilly": "^2.3.0",
@@ -23,6 +24,7 @@
     "vue-router": "^3.5.2"
   },
   "devDependencies": {
+    "@types/vue": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.4.0",

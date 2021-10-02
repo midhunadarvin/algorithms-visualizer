@@ -7,4 +7,5 @@ export interface Node {
   gScore?: number;
   hScore?: number;
   fScore?: number;
+  isWall?: boolean;
 }

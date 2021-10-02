@@ -13,7 +13,7 @@ export function breadthFirstSearch(
   let found = false;
   while (queue.length) {
     const node = queue.shift();
-    const neighbors = getUnvisitedNeighbors(node, grid);
+    const neighbors = getUnvisitedNeighbors(node!, grid);
     for (let i = 0; i < neighbors.length; i++) {
       if (neighbors[i].isWall) continue;
       const { row, col } = neighbors[i];

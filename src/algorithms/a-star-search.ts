@@ -36,7 +36,7 @@ export function AstarSearch(
       const neighbor = neighbors[i];
       const tempGScore = current.gScore! + 1;
       if (openSet.includes(neighbor)) {
-        if (tempGScore < neighbor.gScore) {
+        if (tempGScore < neighbor.gScore!) {
           neighbor.gScore = tempGScore;
         }
       } else {
@@ -45,7 +45,7 @@ export function AstarSearch(
       }
 
       neighbor.hScore = heuristic(neighbor, endNode);
-      neighbor.fScore = neighbor.gScore + neighbor.hScore;
+      neighbor.fScore = neighbor.gScore! + neighbor.hScore;
       neighbor.previousNode = current;
     }
   }
