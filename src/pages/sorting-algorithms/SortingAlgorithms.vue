@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-column flex-auto items-center">
-    <div class="w60 xs-w90 sm-w90 md-small-size-90 md-xsmall-size-90 mb1">
+    <div class="w-100 mb1">
       <md-card>
         <md-card-content class="pb0">
           <SortingOptionsBar
@@ -11,19 +11,21 @@
         </md-card-content>
       </md-card>
     </div>
-    <div class="flex flex-auto w60 xs-w90 sm-w90 md-small-size-90 md-xsmall-size-90 mb1">
+    <div class="w-100 min-h-65vh flex flex-auto mb1">
       <md-card class="flex flex-auto">
-        <md-card-content class="pb0 flex flex-auto w100">
+        <md-card-content class="pb0 flex flex-auto w-100">
           <!-- These are the custom components we'll create -->
           <!-- Values for `my-box` are percentages of the width of the canvas. -->
           <!-- Each bar will take up an equal space of the canvas. -->
-          <VisualCanvas class="flex-auto w100" v-bind:data="chartValues">
+          <VisualCanvas class="flex-auto w-100" v-bind:data="chartValues">
             <Bar
               v-for="(obj, index) of chartValues"
               v-bind:key="index"
               v-bind:time="new Date().getTime()"
-              :x1="((index / chartValues.length) * 100)"
-              :x2="((index / chartValues.length) * 100) + (100 / chartValues.length)"
+              :x1="(index / chartValues.length) * 100"
+              :x2="
+                (index / chartValues.length) * 100 + 100 / chartValues.length
+              "
               :y1="100"
               :y2="100 - obj.value"
               :color="obj.color"
@@ -40,7 +42,7 @@
 import SortingOptionsBar from "../../components/SortingOptionsBar.vue";
 import VisualCanvas from "../../components/VisualCanvas.vue";
 import Bar from "../../components/Bar.vue";
-import {delay, swap} from '../../utils/common.utils';
+import { delay, swap } from "../../utils/common.utils";
 
 export default {
   name: "SortingAlgorithms",
@@ -131,9 +133,8 @@ export default {
           }
         }
         if (this.sorting) {
-          this.chartValues[
-            this.chartValues.length - 1 - i
-          ].color = this.sortedBarColor;
+          this.chartValues[this.chartValues.length - 1 - i].color =
+            this.sortedBarColor;
         }
       }
     },

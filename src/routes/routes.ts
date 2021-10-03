@@ -1,6 +1,7 @@
-import App from "../App.vue";
-import SortingAlgorithms from "../pages/sorting-algorithms/SortingAlgorithms.vue";
-import PathFindinAlgorithms from "../pages/path-finding-algorithms/PathFindingAlgorithms.vue";
+import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
+import SortingAlgorithms from "@/pages/sorting-algorithms/SortingAlgorithms.vue";
+import PathFindinAlgorithms from "@/pages/path-finding-algorithms/PathFindingAlgorithms.vue";
+import Dashboard from "@/pages/dashboard/Dashboard.vue";
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -9,12 +10,13 @@ import PathFindinAlgorithms from "../pages/path-finding-algorithms/PathFindingAl
 const routes = [
   {
     path: "/",
-    component: App,
+    component: DashboardLayout,
+    redirect: "/sorting-algorithms",
     children: [
       {
-        // Default path
-        path: "/",
-        redirect: "/sorting-algorithms",
+        path: "dashboard",
+        name: "Dashboard",
+        component: Dashboard,
       },
       {
         path: "/sorting-algorithms",

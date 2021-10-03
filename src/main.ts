@@ -1,16 +1,18 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import VueMaterial from "vue-material";
-import "vue-material/dist/vue-material.min.css";
-import "vue-material/dist/theme/default.css";
 
 import router from "./router";
 import RangeSlider from "./components/RangeSlider.vue";
 
+// MaterialDashboard plugin
+import MaterialDashboard from "./material-dashboard";
+import "basscss/css/basscss.min.css";
+import "./assets/scss/main.scss";
+
 Vue.component("range-slider", RangeSlider);
 
-Vue.use(VueMaterial);
 Vue.use(VueRouter);
+Vue.use(MaterialDashboard);
 Vue.config.productionTip = false;
 
 new Vue({

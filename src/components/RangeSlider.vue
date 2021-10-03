@@ -13,7 +13,7 @@
     <div class="ui-slider-wrapper">
       <div class="ui-slider-track-container">
         <div class="ui-slider-track"></div>
-        <div class="ui-slider-track-fill" :style="{ width: value + '%'}"></div>
+        <div class="ui-slider-track-fill" :style="{ width: value + '%' }"></div>
       </div>
 
       <div class="ui-slider-thumb-container" ref="thumb">
@@ -139,6 +139,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@use 'sass:math';
 // Overall slider width
 $slider-width: 100%;
 
@@ -217,8 +218,8 @@ $thumb-background-color: $track-fill-color;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -($thumb-container-size / 2) - ($track-height / 2);
-  margin-left: -($thumb-container-size / 2) - ($track-height / 2);
+  margin-top: -(math.div($thumb-container-size, 2)) - (math.div($track-height, 2));
+  margin-left: -(math.div($thumb-container-size, 2)) - (math.div($track-height, 2));
   width: $thumb-container-size;
   height: $thumb-container-size;
 }
@@ -257,7 +258,7 @@ $thumb-background-color: $track-fill-color;
   left: 0;
   right: 0;
   position: absolute;
-  margin-left: -($thumb-container-size / 2) - ($track-height / 2);
-  margin-right: -($thumb-container-size / 2) - ($track-height / 2);
+  margin-left: -(math.div($thumb-container-size, 2)) - (math.div($track-height, 2));
+  margin-right: -(math.div($thumb-container-size, 2)) - (math.div($track-height, 2));
 }
 </style>
