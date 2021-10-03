@@ -1,7 +1,7 @@
 import { Node } from "@/algorithms/interface/node";
 
 export function getAllNodes(grid: Array<Array<Node>>): Array<Node> {
-  const nodes = [];
+  const nodes: Node[] = [];
   for (const row of grid) {
     for (const node of row) {
       nodes.push(node);
@@ -14,7 +14,7 @@ export function getUnvisitedNeighbors(
   node: Node,
   grid: Array<Array<Node>>
 ): Array<Node> {
-  const neighbors = [];
+  const neighbors: Node[] = [];
   const { col, row } = node;
   if (row > 0) neighbors.push(grid[row - 1][col]);
   if (row < grid.length - 1) neighbors.push(grid[row + 1][col]);
@@ -27,7 +27,7 @@ export function getUnvisitedNeighbors(
 // Only works when called *after* the dijkstra method above.
 export function getNodesInShortestPathOrder(finishNode: Node) {
   const nodesInShortestPathOrder = [];
-  let currentNode = finishNode;
+  let currentNode: Node = finishNode;
   while (currentNode) {
     nodesInShortestPathOrder.unshift(currentNode);
     currentNode = currentNode.previousNode!;
