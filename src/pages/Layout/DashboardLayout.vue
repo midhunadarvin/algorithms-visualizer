@@ -52,3 +52,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.main-panel {
+  background-color: #d2d2d2;
+}
+</style>
