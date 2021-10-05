@@ -2,7 +2,7 @@
   <div class="flex flex-column flex-auto items-center">
     <div class="w-100 mb1">
       <md-card>
-        <md-card-content class="pb0">
+        <md-card-content class="card">
           <SortingOptionsBar
             v-bind:sorting="sorting"
             v-on:data-size-change="dataSizeChange"
@@ -13,7 +13,7 @@
     </div>
     <div class="w-100 min-h-65vh flex flex-auto mb1">
       <md-card class="flex flex-auto">
-        <md-card-content class="flex flex-auto w-100 min-h-100">
+        <md-card-content class="flex flex-auto w-100 min-h-100 card">
           <!-- These are the custom components we'll create -->
           <!-- Values for `my-box` are percentages of the width of the canvas. -->
           <!-- Each bar will take up an equal space of the canvas. -->

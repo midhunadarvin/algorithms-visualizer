@@ -1,3 +1,12 @@
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
 .padding-x-30 {
   padding-left: 30px;
   padding-right: 30px;
@@ -20,11 +29,27 @@
 .w-100 {
   width: 100%;
 }
+.mr-16 {
+  margin-right: 16px;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.justify-content-center {
+  justify-content: center;
+}
 .w60 {
   width: 60%;
 }
 .flex-auto {
   flex: 1 1 auto !important;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 @media (max-width: 600px) {
   .xs-w90 {

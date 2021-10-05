@@ -2,7 +2,7 @@
   <md-toolbar md-elevation="0" class="md-transparent">
     <div class="md-toolbar-row">
       <div class="md-toolbar-section-start">
-        <h3 class="md-title">{{ $route.name }}</h3>
+        <h3 class="md-title"></h3>
       </div>
       <div class="md-toolbar-section-end">
         <md-button
@@ -17,7 +17,7 @@
 
         <div class="md-collapse">
           <md-list>
-            <md-list-item href="#/user">
+            <md-list-item>
               <i class="material-icons">person</i>
               <p class="hidden-lg hidden-md">Profile</p>
             </md-list-item>

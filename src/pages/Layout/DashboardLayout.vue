@@ -55,6 +55,6 @@ export default {
 
 <style lang="scss" scoped>
 .main-panel {
-  background-color: #d2d2d2;
+  background-color: #f5f5f5;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-column flex-auto">
     <div class="flex-auto">
-      <md-card>
-        <md-card-content class="pb0">
+      <md-card class="card">
+        <md-card-content>
           <PathFindingOptionsBar
             v-bind:mode="mode"
             v-bind:running="running"
@@ -15,7 +15,7 @@
         </md-card-content>
       </md-card>
       <div
-        class="grid-container"
+        class="grid-container card"
         v-on:mousedown.prevent="setMouseDown"
         v-on:mouseup.prevent="setMouseUp"
       >
@@ -26,7 +26,7 @@
             v-bind:class="{
               path: node.isPath,
               wall: node.isWall,
-              visited: node.type === 'visited' 
+              visited: node.type === 'visited',
             }"
             v-bind:key="j"
             v-on:click.prevent="nodeClick(i, j)"
@@ -90,12 +90,12 @@ export default {
   methods: {
     async start() {
       this.running = true;
-      const startNode = this.nodes[this.previousPoint["start"].y][
-        this.previousPoint["start"].x
-      ];
-      const endNode = this.nodes[this.previousPoint["end"].y][
-        this.previousPoint["end"].x
-      ];
+      const startNode =
+        this.nodes[this.previousPoint["start"].y][
+          this.previousPoint["start"].x
+        ];
+      const endNode =
+        this.nodes[this.previousPoint["end"].y][this.previousPoint["end"].x];
       startNode.distance = 0;
       let visitedNodesInOrder;
       switch (this.algorithm) {
@@ -159,7 +159,7 @@ export default {
           let type = "normal";
           let isWall = false;
           if (this.nodes[i][j].isWall) {
-            type = "wall"
+            type = "wall";
             isWall = true;
           }
           return {
@@ -173,7 +173,7 @@ export default {
             distance: Infinity,
             col: j,
             row: i,
-            isWall
+            isWall,
           };
         });
         return item;
@@ -201,9 +201,10 @@ export default {
     updateNode(i, j, type) {
       const node = this.nodes[i][j];
       if (type === "start" && node.type === "normal") {
-        const previousStartNode = this.nodes[this.previousPoint["start"].y][
-          this.previousPoint["start"].x
-        ];
+        const previousStartNode =
+          this.nodes[this.previousPoint["start"].y][
+            this.previousPoint["start"].x
+          ];
         previousStartNode.isStart = false;
         this.nodes[this.previousPoint["start"].y].splice(
           this.previousPoint["start"].x,
@@ -213,9 +214,8 @@ export default {
         node.isStart = true;
         this.previousPoint["start"] = { x: j, y: i };
       } else if (type === "end") {
-        const previousEndNode = this.nodes[this.previousPoint["end"].y][
-          this.previousPoint["end"].x
-        ];
+        const previousEndNode =
+          this.nodes[this.previousPoint["end"].y][this.previousPoint["end"].x];
         previousEndNode.isEnd = false;
         this.nodes[this.previousPoint["end"].y].splice(
           this.previousPoint["end"].x,

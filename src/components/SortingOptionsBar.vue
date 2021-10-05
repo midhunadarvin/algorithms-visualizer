@@ -1,7 +1,9 @@
 <template>
   <div class="md-layout md-gutter">
-    <div class="md-layout-item md-small-size-100 md-xsmall-size-100">
-      <md-field>
+    <div
+      class="md-layout-item md-small-size-100 md-xsmall-size-100 flex flex-2"
+    >
+      <md-field class="mb-0">
         <label for="algorithm">Sorting algorithm</label>
         <md-select v-model="algorithm" name="algorithm" id="algorithm">
           <md-option value="bubble-sort">Bubble Sort</md-option>
@@ -12,26 +14,45 @@
       </md-field>
     </div>
 
-    <div class="md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100 data-size">
-      <div class="md-field md-theme-default md-has-value">
+    <div
+      class="
+        md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100
+        flex flex-2
+        data-size
+      "
+    >
+      <div
+        class="md-field md-theme-default md-has-value mb-0 range-slider-field"
+      >
         <label for="data-size">Data Size</label>
         <RangeSlider class="range-slider" v-on:slider-change="sliderChange" />
       </div>
     </div>
 
     <div
-      class="button-container md-layout-item md-layout md-alignment-top-center md-medium-size-100 md-large-size-30 md-small-size-100 md-xsmall-size-100"
+      class="
+        button-container
+        md-layout-item md-layout
+        flex flex-1
+        md-alignment-top-center
+        md-medium-size-100
+        md-large-size-30
+        md-small-size-100
+        md-xsmall-size-100
+        justify-content-center
+      "
     >
-      <div class="mb1">
-        <md-button class="md-raised md-accent reset-button" v-on:click="resetButtonClick">Reset</md-button>
-      </div>
-      <div class="mb1">
-        <md-button
-          class="md-raised md-primary sort-button"
-          v-on:click="sortButtonClick"
-          :disabled="sorting"
-        >Sort</md-button>
-      </div>
+      <md-button
+        class="md-raised md-accent reset-button mr-16"
+        v-on:click="resetButtonClick"
+        >Reset</md-button
+      >
+      <md-button
+        class="md-raised md-primary sort-button"
+        v-on:click="sortButtonClick"
+        :disabled="sorting"
+        >Sort</md-button
+      >
     </div>
   </div>
 </template>
@@ -101,5 +122,8 @@ a {
 .button-container {
   min-width: 250px;
   margin-bottom: 20px;
+}
+.range-slider-field::after {
+  display: none;
 }
 </style>

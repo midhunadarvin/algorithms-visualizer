@@ -3,15 +3,21 @@
     <div class="md-layout img-filled">
       <div class="text-content">
         <h5>Welcome to Algorithms Visualizer</h5>
-        <a href="#/sorting-algorithms" class="main-stroked-button" tabindex="0"
-          >Sorting</a
-        >
-        <a
-          href="#/pathfinding-algorithms"
-          class="main-stroked-button"
-          tabindex="0"
-          >Pathfinding</a
-        >
+        <h3>Choose from any one of the following</h3>
+        <div class="flex justify-center">
+          <a
+            href="#/sorting-algorithms"
+            class="main-stroked-button"
+            tabindex="0"
+            >Sorting</a
+          >
+          <a
+            href="#/pathfinding-algorithms"
+            class="main-stroked-button"
+            tabindex="0"
+            >Pathfinding</a
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -36,15 +42,14 @@ export default {
 }
 h3 {
   margin-bottom: 25px;
-  font-size: 18px;
-  text-transform: uppercase;
-  font-weight: 600;
+  font-size: 22px;
   letter-spacing: 1px;
   color: #000;
+  -webkit-animation: fadeOutRight 1s both;
   animation: fadeOutRight 1s both;
 }
 h5 {
-  margin-bottom: 50px;
+  margin-bottom: 15px;
   font-size: 36px;
   font-weight: 200;
   letter-spacing: 2.5px;
@@ -72,11 +77,13 @@ h5 {
   font-size: 13px;
   border-radius: 25px;
   padding: 11px 25px;
+  border: 2px solid #fff;
   background-color: #fff;
   text-transform: uppercase;
   color: #5fb759 !important;
   font-weight: 600;
   letter-spacing: 1px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .img-filled {
   height: calc(100vh - 152px);

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
-    <div class="col-2">
-      <md-field>
+    <div class="col-4">
+      <md-field class="mb-0">
         <label for="algorithm">Pathfinding algorithm</label>
         <md-select v-model="algorithm" name="algorithm" id="algorithm">
           <md-option value="dijkstra">Dijkstra's algorithm</md-option>
@@ -21,23 +21,25 @@
       </div>
     </div>
 
-    <div class="col-4 flex flex-row">
-      <div class="mb1">
-        <md-button class="md-raised md-accent reset-button" v-on:click="resetButtonClick" :disabled="running">Reset</md-button>
-      </div>
-       <div class="mb1">
-        <md-button 
-          class="md-raised reset-button"
-          v-on:click="clearWallsButtonClick"
-          :disabled="running">Clear Walls</md-button>
-      </div>
-      <div class="mb1">
-        <md-button
-          class="md-raised md-primary sort-button"
-          v-on:click="actionButtonClick"
-          :disabled="running"
-        >Visualize</md-button>
-      </div>
+    <div class="col-4 flex flex-row justify-center">
+      <md-button
+        class="md-raised md-accent reset-button mr-16"
+        v-on:click="resetButtonClick"
+        :disabled="running"
+        >Reset</md-button
+      >
+      <md-button
+        class="md-raised reset-button mr-16"
+        v-on:click="clearWallsButtonClick"
+        :disabled="running"
+        >Clear Walls</md-button
+      >
+      <md-button
+        class="md-raised md-primary sort-button mr-16"
+        v-on:click="actionButtonClick"
+        :disabled="running"
+        >Visualize</md-button
+      >
     </div>
   </div>
 </template>
@@ -50,16 +52,16 @@ export default {
   },
   components: {},
   watch: {
-      mode() {
-          this.$emit("mode-change", this.mode);
-      },
-      algorithm() {
-        this.$emit("algorithm-change", this.algorithm);
-      }
+    mode() {
+      this.$emit("mode-change", this.mode);
+    },
+    algorithm() {
+      this.$emit("algorithm-change", this.algorithm);
+    },
   },
   data() {
     return {
-      mode: 'wall',
+      mode: "wall",
       algorithm: "dijkstra",
       dataSizeValue: 50,
     };
@@ -77,7 +79,7 @@ export default {
     },
     clearWallsButtonClick() {
       this.$emit("clear-walls-button-click");
-    }
+    },
   },
 };
 </script>
