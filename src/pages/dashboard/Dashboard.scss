@@ -1,0 +1,85 @@
+.dashboard-content {
+  background: #fff;
+  box-shadow: #ddd 3px 3px 10px;
+}
+.text-content {
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px;
+  @media (min-width: 600px) {
+    height: 100%;
+  }
+}
+.social-icon {
+    background: #000;
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    color: #FFF;
+    padding: 5px;
+}
+h3 {
+  margin-bottom: 25px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #000;
+  -webkit-animation: fadeOutRight 1s both;
+  animation: fadeOutRight 1s both;
+}
+h5 {
+  margin-bottom: 15px;
+  font-size: 36px;
+  font-weight: 200;
+  letter-spacing: 2.5px;
+  color: #000;
+  overflow: hidden;
+}
+.main-stroked-button {
+  margin: 0 5px;
+  font-size: 13px;
+  border-radius: 25px;
+  padding: 11px 25px;
+  background-color: transparent;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  color: #000 !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.main-stroked-button:hover {
+  margin: 0 5px;
+  font-size: 13px;
+  border-radius: 25px;
+  padding: 11px 25px;
+  border: 2px solid #fff;
+  background-color: #fff;
+  text-transform: uppercase;
+  color: #5fb759 !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.img-filled {
+  height: calc(100vh - 152px);
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+.horizontal-divider {
+    width: 66%;
+    text-align: center;
+    display: inline-block;
+}
+.dashboard-intro {
+  width: 66%;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+}

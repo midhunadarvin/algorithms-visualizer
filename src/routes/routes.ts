@@ -11,10 +11,10 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/sorting-algorithms",
+    redirect: "/dashboard",
     children: [
       {
-        path: "dashboard",
+        path: "/dashboard",
         name: "Dashboard",
         component: Dashboard,
       },
